@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/cheater",
+            "lambdaFunction": "cheaterapifunc",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/cheater"
+        }
+    ],
+    "resourceName": "cheaterapi",
+    "apiName": "cheaterapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "cheaterapifunc"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-authcra-devq-173327-authRole",
+        "unAuthRoleName": "amplify-authcra-devq-173327-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "cheaterapifunc",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

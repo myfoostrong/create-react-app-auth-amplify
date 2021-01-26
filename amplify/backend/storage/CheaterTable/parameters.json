@@ -1,0 +1,7 @@
+{
+    "tableName": "CheaterTable",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S",
+    "sortKeyName": "player_id",
+    "sortKeyType": "N"
+}
