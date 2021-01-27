@@ -43,7 +43,9 @@ class App extends Component {
   getData = () => {
     API.get('cheaterapi', '/cheater')
     .then(response => {
-      this.setState({data: response})
+      let data = [].concat(response)
+        .sort((a,b) => a.player_id - b.player_id )
+      this.setState({data: data})
       this.intervalID = setTimeout(this.getData.bind(this), 5000);
     })
   }
@@ -85,9 +87,9 @@ class App extends Component {
                   <tr key={item.player_id}>
                     <td>{item.player_id}</td>
                     <td>{item.anomaly}</td>
-                    <td>{item.fraud}</td>
-                    <td>{item.banned ? 'banned' : 'valid'}</td>
-                    <td><Button onClick={()=>this.banPlayer(item)}> Ban Player </Button></td>
+                    <td>{item.fraud > 0 ? <p className="Banned-Text">Cheater</p> : 'OK'}</td>
+                    <td>{item.banned ? <p className="Banned-Text">Banned</p> : 'no'}</td>
+                    <td><Button disabled={item.banned} onClick={()=>this.banPlayer(item)}> Ban Player </Button></td>
                   </tr>
                 )
               })}
